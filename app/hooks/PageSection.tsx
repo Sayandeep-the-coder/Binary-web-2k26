@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import MaxWidthWrapper from '../hooks/MaxWidthWrapper';
-import { cn } from '@/app/lib/utils';
+import MaxWidthWrapper from './MaxWidthWrapper';
+import { cn } from '../lib/utils';
 
 const PageSection = ({
   id,
