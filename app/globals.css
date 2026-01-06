@@ -113,5 +113,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-press-start-2p), monospace;
 }
+
+button {
+  font-family: var(--font-press-start-2p), monospace;
+}
+

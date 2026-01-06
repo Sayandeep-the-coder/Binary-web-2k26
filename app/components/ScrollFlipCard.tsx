@@ -88,7 +88,7 @@ export default function ScrollFlipCard() {
       }
 
       // Inverse Scale Logic for Hero
-      const inverseScale = scale !== 0 ? 1 / scale : 1;
+      const inverseScale = scale !== 0 ? scale/16 : 1;
 
       // Rotation & Radius
       const rotateY = flipProgress * 180;
