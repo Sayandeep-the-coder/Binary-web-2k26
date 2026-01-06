@@ -57,11 +57,11 @@ const Tracks = () => {
     return (
         <section id="tracks" className="py-20 bg-black text-white relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-16">
+                <div className="mb-2">
                     <ArcadeHeader text="Tracks" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center scale-85">
                     {tracks.map((track, index) => (
                         <PixelTransition
                             key={index}

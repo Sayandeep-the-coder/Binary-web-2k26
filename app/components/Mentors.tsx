@@ -257,18 +257,14 @@ const Mentors = () => {
             <div className="relative mx-auto max-w-7xl px-4">
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
-                    <div className="mb-16">
+                    <div className="mb-10">
                         <ArcadeHeader text="Mentors" />
                     </div>
-
-                    <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto mb-12">
-                        Our diverse team of innovators, creators, and problem-solvers working together to shape the future of AI technology.
-                    </p>
                 </div>
 
                 {/* Team marquee - Slower animations */}
                 {/* Desktop Layout - Vertical Columns */}
-                <div className="mt-10 hidden md:flex justify-center gap-8 max-h-[800px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+                <div className="mt-0 hidden md:flex justify-center gap-20 max-h-[800px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
                     <div className="hidden lg:block">
                         <Marquee pauseOnHover vertical className="[--duration:45s]">
                             {firstColumn.map((member) => (

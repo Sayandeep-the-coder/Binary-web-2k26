@@ -56,8 +56,8 @@ export default function Home() {
             <Navbar />
             {/* <ScrollFlipCard /> */}
             <Hero heroTopRef={heroTopRef}/>
-              <AboutSection />
-              <Timeline />
+            <AboutSection />
+            <Timeline />
             <Tracks />
             <Gallary />
             <Mentors />
