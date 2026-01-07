@@ -160,8 +160,8 @@ const Timeline = () => {
                   scrollTrigger: {
                       trigger: mobileSvg,
                       start: "top 20%",
-                      end: "bottom bottom",
-                      scrub: 1,
+                      end: "bottom 80%",
+                      scrub: 3,
                   },
               }
           );
@@ -182,8 +182,8 @@ const Timeline = () => {
               scrollTrigger: {
                   trigger: mobileSvg,
                   start: "top 20%",
-                  end: "bottom bottom",
-                  scrub: 1,
+                  end: "bottom 80%",
+                  scrub: 3,
                   markers: false,
               },
           });
@@ -195,7 +195,7 @@ const Timeline = () => {
           trigger: ".desktop-svg",
           start: "top 30%",
           end: "bottom bottom",
-          scrub: 2,
+          scrub: 3,
         }
       });
 
@@ -225,7 +225,7 @@ const Timeline = () => {
           trigger: ".tab-svg",
           start: "top 20%",
           end: "bottom bottom",
-          scrub: 2,
+          scrub: 3,
         }
       });
 
@@ -257,8 +257,8 @@ const Timeline = () => {
         scrollTrigger: {
           trigger: ".mobile-svg",
           start: "top 20%",
-          end: "bottom bottom",
-          scrub: 1,
+          end: "bottom 80%",
+          scrub: 3,
         }
       });
 
@@ -404,7 +404,7 @@ const Timeline = () => {
                 pathId="path-mobile"
                 pacmanClass="pattern-rect-mobile"
               />
-               <div className="z-10 absolute  flex flex-col gap-[2.5rem] w-full h-[920px] md:hidden font-['SF_Pixelate']">
+               <div className="z-10 absolute  flex flex-col gap-[2.5rem] w-full h-[920px] md:hidden font-sf-pixelate">
                    {timeline.map((item, index) => (
                          <div key={index} className="relative left-[60px] w-[calc(100%-80px)]">
                             <MiddleTimelineBox
