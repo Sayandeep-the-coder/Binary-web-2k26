@@ -5,22 +5,23 @@ import Image from "next/image";
 import ArcadeHeader from "../ui/ArcadeHeader";
 import { useTransform, useScroll, motion } from "framer-motion";
 import useScreenSize from "@/app/hooks/WidthDetect";
+import PageSection from "@/app/hooks/PageSection";
 
 // import { Key } from 'react';
 // import { motion } from 'framer-motion';
 const images = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-  "11.jpg",
-  "12.jpg",
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
+  "5.webp",
+  "6.webp",
+  "7.webp",
+  "8.webp",
+  "9.webp",
+  "10.webp",
+  "11.webp",
+  "12.webp",
 ];
 
 // Define type for dimension state
@@ -70,53 +71,55 @@ export default function ScrollGallery() {
   }, []);
 
   return (
-    <section id="gallery" className={styles.main}>
-      <div className="mb-2">
-        <ArcadeHeader text="Gallery" />
-      </div>
-      <div
-        ref={gallery}
-        className={styles.gallery}
-      >
-        {/* Mobile: Single Column with all images */}
-        {isSmallScreen ? (
-          <Column
-            images={images}
-            y={0}
-          />
-        ) : (
-          /* Desktop: Multi-column parallax layout */
-          <>
+    <PageSection id="gallery">
+      <section className={styles.main}>
+        <div className="mb-12">
+          <ArcadeHeader text="Gallery" />
+        </div>
+        <div
+          ref={gallery}
+          className={styles.gallery}
+        >
+          {/* Mobile: Single Column with all images */}
+          {isSmallScreen ? (
             <Column
-              images={[images[0], images[1], images[2]]}
-              y={y as unknown as number}
+              images={images}
+              y={0}
             />
-            <Column
-              images={[images[3], images[4], images[5]]}
-              y={y2 as unknown as number}
-            />
-            {isMediumScreen ? (
+          ) : (
+            /* Desktop: Multi-column parallax layout */
+            <>
               <Column
-                images={[images[6], images[7], images[8]]}
-                y={y3 as unknown as number}
+                images={[images[0], images[1], images[2]]}
+                y={y as unknown as number}
               />
-            ) : (
-              <>
+              <Column
+                images={[images[3], images[4], images[5]]}
+                y={y2 as unknown as number}
+              />
+              {isMediumScreen ? (
                 <Column
                   images={[images[6], images[7], images[8]]}
                   y={y3 as unknown as number}
                 />
-                <Column
-                  images={[images[9], images[10], images[11]]}
-                  y={y4 as unknown as number}
-                />
-              </>
-            )}
-          </>
-        )}
-      </div>
-      <div className={styles.spacer}></div>
-    </section>
+              ) : (
+                <>
+                  <Column
+                    images={[images[6], images[7], images[8]]}
+                    y={y3 as unknown as number}
+                  />
+                  <Column
+                    images={[images[9], images[10], images[11]]}
+                    y={y4 as unknown as number}
+                  />
+                </>
+              )}
+            </>
+          )}
+        </div>
+        <div className={styles.spacer}></div>
+      </section>
+    </PageSection>
   );
 }
 

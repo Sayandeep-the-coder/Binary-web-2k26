@@ -15,7 +15,8 @@ const TetrisBackground = () => {
 
         // --- CONFIG ---
         const BLOCK_SIZE = 30; // Scale of blocks
-        const STEP_DELAY = 50; // ms per game step (lower = faster)
+        const STEP_DELAY = 100; // ms per game step (lower = faster)
+        const INITIAL_PRE_DROP = 100; // Number of pieces to simulate before starting
         // We want it "fast and continuous".
 
         // Shades of Green
@@ -272,6 +273,46 @@ const TetrisBackground = () => {
             });
         };
 
+        const simulateInitialState = (count: number) => {
+            for (let i = 0; i < count; i++) {
+                const typeId = (PIECES.length * Math.random() | 0) || 1;
+                const pieceMatrix = PIECES[typeId];
+                const spawnX = Math.floor(Math.random() * (cols - pieceMatrix[0].length));
+
+                let simPiece = {
+                    matrix: pieceMatrix,
+                    pos: { x: spawnX, y: 0 },
+                    type: typeId
+                };
+
+                // Check collision at spawn
+                if (collide(grid, simPiece)) {
+                    // Stop if full or simple spawn failure
+                    break;
+                }
+
+                // AI Decision
+                const best = findBestMove(pieceMatrix, spawnX);
+                if (best) {
+                    simPiece.matrix = rotate(pieceMatrix, best.rotation);
+                    simPiece.pos.x = best.x;
+                }
+
+                // Valid move?
+                if (collide(grid, simPiece)) continue;
+
+                // Hard Drop
+                while (!collide(grid, simPiece)) {
+                    simPiece.pos.y++;
+                }
+                simPiece.pos.y--; // back up
+
+                // Merge
+                merge(grid, simPiece);
+                arenaSweep();
+            }
+        };
+
         // --- MAIN LOOP ---
         const resize = () => {
             // Fill Parent
@@ -288,6 +329,9 @@ const TetrisBackground = () => {
             rows = Math.ceil(canvas.height / BLOCK_SIZE);
 
             grid = createMatrix(cols, rows);
+
+            // Pre-populate grid
+            simulateInitialState(INITIAL_PRE_DROP);
         };
 
         resize();
